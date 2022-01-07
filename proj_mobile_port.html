@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <title>Tap Fn + F11</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{background-color: black;}
+            h6,p{color: blanchedalmond;}
+        </style>
+         <script>
+            rr = 0
+            gg = 0
+            bb = 0
+            thiskey = 0
+            document.onkeydown = checkKey;
+            delta=5
+            function funL()
+            {
+                if(thiskey==0)
+                    {
+                        thiskey=2
+                        document.getElementById("infotable").innerHTML = "this key is blue. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else if(thiskey==1)
+                    {
+                        thiskey=0
+                        document.getElementById("infotable").innerHTML = "this key is red. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else{
+                        thiskey=1
+                        document.getElementById("infotable").innerHTML = "this key is green. r="+rr+"g="+gg+"b"+bb;
+                    }
+            }
+            function funR()
+            {
+                if(thiskey==0)
+                    {
+                        thiskey=1
+                        document.getElementById("infotable").innerHTML = "this key is green. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else if(thiskey==1)
+                    {
+                        thiskey=2
+                        document.getElementById("infotable").innerHTML = "this key is blue. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else{
+                        thiskey=0
+                        document.getElementById("infotable").innerHTML = "this key is red. r="+rr+"g="+gg+"b"+bb;
+                    }
+            }
+            function funU()
+            {
+                if(thiskey==0)
+                    {
+                        if(rr!=255){rr+=delta}
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is red. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else if(thiskey==1)
+                    {
+                        if(gg!=255){gg+=delta}
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is green. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else{
+                        if(bb!=255){bb+=delta}
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is blue. r="+rr+"g="+gg+"b"+bb;
+                    }
+            }
+            function funD()
+            {
+                if(thiskey==0)
+                    {
+                        if(rr!=00){rr-=delta}
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is red. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else if(thiskey==1)
+                    {
+                        if(gg!=0){gg-=delta}
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is green. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else{
+                        if(bb!=0){bb-=delta}
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is blue. r="+rr+"g="+gg+"b"+bb;
+                    }
+            }
+            function checkKey(e) {
+                e = e || window.event;
+                if (e.keyCode == '38') {
+                    // up arrow
+                    funU()
+                }
+                else if (e.keyCode == '40') {
+                    // down arrow
+                    funD()
+                }
+                else if (e.keyCode == '37') {
+                    // left arrow
+                    funL()
+                }
+                else if (e.keyCode == '39') {
+                    // right arrow
+                    funR()
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <p id="infotable">this key is red. r=0 g=0 b=0</p>
+        <center>
+            <h6 id="hint" onclick="document.getElementById('hint').style.display = 'none';">fn+f11 to fullscreen. tap left or right to change changable color. click this label to hide this hint</h6>
+        </center>
+        <table>
+            <tr>
+                <td>
+                    <button onclick="funL()">←</button>
+                </td>
+                <td>
+                    <button onclick="funR()">→</button>
+                </td>
+                <td>
+                    <button onclick="funU()">↑</button>
+                </td>
+                <td>
+                    <button onclick="funD()">↓</button>
+                </td>
+            </tr>
+        </table>
+       
+    </body>
+</html>
