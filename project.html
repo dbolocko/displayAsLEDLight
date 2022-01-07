@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>Tap Fn + F11</title>
+        <style>
+            body{background-color: black;}
+            h6{color: blanchedalmond;}
+        </style>
+    </head>
+    <body>
+        <p id="infotable">this key is red. r=0 g=0 b=0</p>
+        <center>
+            <h6>fn+f11 to fullscreen. tap left or right to change changable color</h6>
+        </center>
+        <script>
+            rr = 0
+            gg = 0
+            bb = 0
+            thiskey = 0
+            document.onkeydown = checkKey;
+            delta=5
+            function checkKey(e) {
+                e = e || window.event;
+                if (e.keyCode == '38') {
+                    // up arrow
+                    if(thiskey==0)
+                    {
+                        rr+=delta
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is red. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else if(thiskey==1)
+                    {
+                        gg+=delta
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is green. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else{
+                        bb+=delta
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is blue. r="+rr+"g="+gg+"b"+bb;
+                    }
+                }
+                else if (e.keyCode == '40') {
+                    // down arrow
+                    if(thiskey==0)
+                    {
+                        rr-=delta
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is red. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else if(thiskey==1)
+                    {
+                        gg-=delta
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is green. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else{
+                        bb-=delta
+                        document.body.style.backgroundColor='rgb('+rr+',' +gg+ ',' +bb+ ')';
+                        document.getElementById("infotable").innerHTML = "this key is blue. r="+rr+"g="+gg+"b"+bb;
+                    }
+                }
+                else if (e.keyCode == '37') {
+                    // left arrow
+                    if(thiskey==0)
+                    {
+                        thiskey=2
+                        document.getElementById("infotable").innerHTML = "this key is blue. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else if(thiskey==1)
+                    {
+                        thiskey=0
+                        document.getElementById("infotable").innerHTML = "this key is red. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else{
+                        thiskey=1
+                        document.getElementById("infotable").innerHTML = "this key is green. r="+rr+"g="+gg+"b"+bb;
+                    }
+                }
+                else if (e.keyCode == '39') {
+                    // right arrow
+                    if(thiskey==0)
+                    {
+                        thiskey=1
+                        document.getElementById("infotable").innerHTML = "this key is green. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else if(thiskey==1)
+                    {
+                        thiskey=2
+                        document.getElementById("infotable").innerHTML = "this key is blue. r="+rr+"g="+gg+"b"+bb;
+                    }
+                    else{
+                        thiskey=0
+                        document.getElementById("infotable").innerHTML = "this key is red. r="+rr+"g="+gg+"b"+bb;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
